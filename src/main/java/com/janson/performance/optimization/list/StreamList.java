@@ -1,6 +1,7 @@
 package com.janson.performance.optimization.list;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,6 +13,11 @@ public class StreamList {
 
     public static void main(String[] args) {
 
+//        parallelStream();
+        maxLengthStream();
+    }
+
+    private static void parallelStream() {
         List<Integer> integerList = new ArrayList<Integer>(100);
         for (int i = 0; i < 100; i++) {
             integerList.add(i);
@@ -27,5 +33,16 @@ public class StreamList {
         // parallelList ArrayList是线程不安全的集合，而当前又使用了并行流去处理，所以会出现有异常、少数据或者正常输出的情况。
         System.out.println("parallelList:" + parallelList);
         System.out.println("parallelList size:" + parallelList.size());
+    }
+
+    private static void maxLengthStream() {
+        List<String> names = Arrays.asList("张三", "李四", "王老五", "李三", "刘老四", "张经济纠纷就放假");
+        String maxLenStartWithZ = names.stream()
+                .filter(name -> name.startsWith("张"))
+                .mapToInt(String::length)
+                .max()
+                .toString();
+        System.out.println(maxLenStartWithZ);
+
     }
 }
