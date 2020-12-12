@@ -12,9 +12,8 @@ public class UserTest {
     public static void main(String[] args) {
         User user = buildUser();
         System.out.println("脱敏前原始： " + user);
-        User sensitiveUser = SensitiveUtil.desCopy(user);
+        String sensitiveUser = SensitiveUtil.desJson(user);
         System.out.println("脱敏对象： " + sensitiveUser);
-        System.out.println("脱敏后原始： " + user);
     }
 
 

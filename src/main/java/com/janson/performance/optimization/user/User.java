@@ -5,7 +5,6 @@ import com.github.houbb.sensitive.core.api.strategory.StrategyCardId;
 import com.github.houbb.sensitive.core.api.strategory.StrategyChineseName;
 import com.github.houbb.sensitive.core.api.strategory.StrategyEmail;
 import com.github.houbb.sensitive.core.api.strategory.StrategyPassword;
-import com.github.houbb.sensitive.core.api.strategory.StrategyPhone;
 import lombok.Data;
 
 /**
@@ -27,7 +26,8 @@ public class User {
     @Sensitive(strategy = StrategyEmail.class)
     private String email;
 
-    @Sensitive(strategy = StrategyPhone.class)
+    @Sensitive(strategy = CustomStrategyPhone.class)
     private String phone;
+
 
 }
